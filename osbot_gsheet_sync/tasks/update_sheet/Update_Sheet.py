@@ -7,12 +7,14 @@ from pbx_gs_python_utils.utils.Misc import Misc
 class Update_Sheet:
 
     def log_message(self):
-        print('******* before')
-        message = Misc.random_string_and_numbers(prefix='123....this is a message from code build - ')
+        p
+        rint('******* In Update_Sheet **** [Start]')
+        message = os.environ['message']
         channel = 'DDKUZTK6X'
         team_id = 'T7F3AUXGV'
         slack_message(message, [], channel, team_id)
-        print('******* after')
+
+        print('******* In Update_Sheet **** [End]')
         print(os.environ['aaa'])
 
 
