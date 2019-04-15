@@ -4,6 +4,7 @@ phases:
     commands:
       - pip3 install osbot-jira
       - pip3 install osbot-gsuite
+      - pip3 install jira
   build:
     commands:
       - echo "**** Starting build"
