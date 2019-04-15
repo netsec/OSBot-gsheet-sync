@@ -2,6 +2,7 @@ from unittest import TestCase
 
 from osbot_aws.apis.IAM import IAM
 from osbot_aws.helpers.Create_Code_Build import Create_Code_Build
+from osbot_gsuite.apis.sheets.API_Jira_Sheets_Sync import API_Jira_Sheets_Sync
 from pbx_gs_python_utils.utils.Dev import Dev
 
 
@@ -27,4 +28,10 @@ class test_Trigger_Builds(TestCase):
         build_id = self.trigger_task('update_sheet','This is another message from CodeBuild')
         self.api.code_build.build_wait_for_completion(build_id)
 
+    def test_jira_load(self):
+        file_id = '1_Bwz6z34wALFGb1ILUXG8CtF1-Km6F9_sGXnAu4gewY'
+        gsuite_secret_id ='gsuite_gsbot_user'
+        sheets_sync = API_Jira_Sheets_Sync(file_id=file_id, gsuite_secret_id=gsuite_secret_id)
+        result = sheets_sync.load_data_from_jira()
+        Dev.pprint(result)
 

@@ -2,7 +2,8 @@ version: 0.1
 phases:
   install:
     commands:
-      - pip3 install networkx
+      - pip3 install osbot-jira
+      - pip3 install osbot-gsuite
   build:
     commands:
       - echo "**** Starting build"
