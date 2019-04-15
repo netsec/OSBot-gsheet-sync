@@ -26,6 +26,12 @@ class Update_Sheet:
         Dev.pprint('sheet name', sheet_name)
         sheet_data = sheets_sync.get_sheet_data(sheet_name)
         Dev.pprint(sheet_data)
+
+        sheets_sync.update_sheet_data_with_jira_data(sheet_data)
+        raw_data = sheets_sync.convert_sheet_data_to_raw_data(sheet_data)
+        sheets_sync.update_file_with_raw_data(raw_data, sheets_sync.sheet_name())
+        sheets_sync.update_file_with_raw_data(raw_data,sheets_sync.sheet_name_backup())
+        return "loaded data from jira completed...."
         #result = sheets_sync.load_data_from_jira()
         #Dev.pprint(result)
 
