@@ -9,3 +9,7 @@ class Update_Sheet:
         channel = 'DDKUZTK6X'
         team_id = 'T7F3AUXGV'
         slack_message(message, [], channel, team_id)
+
+
+if __name__ == '__main__':
+    Update_Sheet().log_message()

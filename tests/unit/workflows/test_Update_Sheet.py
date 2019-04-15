@@ -2,7 +2,7 @@ import sys ; sys.path.append('..')
 
 from unittest import TestCase
 
-from osbot_gsheet_sync.workflows.Update_Sheet import Update_Sheet
+from osbot_gsheet_sync.update_sheet.Update_Sheet import Update_Sheet
 
 
 class test_Update_Sheet(TestCase):
