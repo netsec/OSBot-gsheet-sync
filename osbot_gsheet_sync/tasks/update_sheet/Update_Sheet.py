@@ -22,8 +22,12 @@ class Update_Sheet:
         file_id = '1_Bwz6z34wALFGb1ILUXG8CtF1-Km6F9_sGXnAu4gewY'
         gsuite_secret_id = 'gsuite_gsbot_user'
         sheets_sync = API_Jira_Sheets_Sync(file_id=file_id, gsuite_secret_id=gsuite_secret_id)
-        result = sheets_sync.load_data_from_jira()
-        Dev.pprint(result)
+        sheet_name = sheets_sync.sheet_name()
+        Dev.pprint('sheet name', sheet_name)
+        sheet_data = sheets_sync.get_sheet_data(sheet_name)
+        Dev.pprint(sheet_data)
+        #result = sheets_sync.load_data_from_jira()
+        #Dev.pprint(result)
 
 
         print('******* In Update_Sheet **** [End]')
