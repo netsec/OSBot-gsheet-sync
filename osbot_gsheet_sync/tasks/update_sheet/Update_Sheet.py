@@ -20,7 +20,7 @@ class Update_Sheet:
         slack_message(message, [], channel, team_id)
 
         file_id = '1_Bwz6z34wALFGb1ILUXG8CtF1-Km6F9_sGXnAu4gewY'
-        gsuite_secret_id = 'gsuite_token'
+        gsuite_secret_id = 'gsuite_gsbot_user'
         sheets_sync = API_Jira_Sheets_Sync(file_id=file_id, gsuite_secret_id=gsuite_secret_id)
         result = sheets_sync.load_data_from_jira()
         Dev.pprint(result)
