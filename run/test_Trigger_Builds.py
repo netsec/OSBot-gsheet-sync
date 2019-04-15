@@ -21,10 +21,10 @@ class test_Trigger_Builds(TestCase):
                                                'type' : 'PLAINTEXT'}]
             #'sourceVersion'    : task_name
         }
-        return self.api.code_build.codebuild.start_build(**kvargs).get('build')
+        return self.api.code_build.codebuild.start_build(**kvargs).get('build').get('arn')
 
     def test_trigger_Update_Sheet(self):
-        self.trigger_task('update_sheet','this is a message from CodeBuild')
-        self.api.code_build.build_wait_for_completion()
+        build_id = self.trigger_task('update_sheet','this is a message from CodeBuild')
+        self.api.code_build.build_wait_for_completion(build_id)
 
 

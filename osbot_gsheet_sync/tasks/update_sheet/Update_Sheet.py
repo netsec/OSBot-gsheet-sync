@@ -7,8 +7,7 @@ from pbx_gs_python_utils.utils.Misc import Misc
 class Update_Sheet:
 
     def log_message(self):
-        p
-        rint('******* In Update_Sheet **** [Start]')
+        print('******* In Update_Sheet **** [Start]')
         message = os.environ['message']
         channel = 'DDKUZTK6X'
         team_id = 'T7F3AUXGV'
