@@ -1,3 +1,5 @@
+import os
+
 from pbx_gs_python_utils.utils.Lambdas_Helpers import slack_message
 from pbx_gs_python_utils.utils.Misc import Misc
 
@@ -5,11 +7,13 @@ from pbx_gs_python_utils.utils.Misc import Misc
 class Update_Sheet:
 
     def log_message(self):
-
+        print('******* before')
         message = Misc.random_string_and_numbers(prefix='123....this is a message from code build - ')
         channel = 'DDKUZTK6X'
         team_id = 'T7F3AUXGV'
         slack_message(message, [], channel, team_id)
+        print('******* after')
+        print(os.environ['aaa'])
 
 
 if __name__ == '__main__':
