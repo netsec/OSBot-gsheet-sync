@@ -44,8 +44,10 @@ class Update_Sheet:
         if file_id is None or command is None:
             Dev.pprint('**** missing file_id or command environment variables****')
         else:
+            Dev.pprint('##########', file_id, command, '##########')
             gsuite_secret_id = 'gsuite_gsbot_user'
             sheets_sync = API_Jira_Sheets_Sync(file_id=file_id, gsuite_secret_id=gsuite_secret_id)
+            result = ''
             if command is 'load_sheet': result = sheets_sync.load_data_from_jira()
             if command is 'sync_sheet': result = sheets_sync.sync_sheet()
 

@@ -27,7 +27,14 @@ class test_Trigger_Builds(TestCase):
         file_id = '1_Bwz6z34wALFGb1ILUXG8CtF1-Km6F9_sGXnAu4gewY'
         command = 'load_sheet'
         build_id = self.trigger_task('update_sheet',file_id, command)
-        self.api.code_build.build_wait_for_completion(build_id)
+        Dev.pprint(build_id)
+        #self.api.code_build.build_wait_for_completion(build_id)
+
+    def test_trigger_sync_sheet(self):
+        file_id = '1_Bwz6z34wALFGb1ILUXG8CtF1-Km6F9_sGXnAu4gewY'
+        command = 'sync_sheet'
+        build_id = self.trigger_task('update_sheet',file_id, command)
+        Dev.pprint(build_id)
 
     def test_jira_load(self):
         file_id = '1_Bwz6z34wALFGb1ILUXG8CtF1-Km6F9_sGXnAu4gewY'
