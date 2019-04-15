@@ -14,8 +14,5 @@ class Update_Sheet:
         slack_message(message, [], channel, team_id)
 
         print('******* In Update_Sheet **** [End]')
-        print(os.environ['aaa'])
-
-
 if __name__ == '__main__':
     Update_Sheet().log_message()

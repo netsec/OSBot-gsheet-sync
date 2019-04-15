@@ -24,7 +24,7 @@ class test_Trigger_Builds(TestCase):
         return self.api.code_build.codebuild.start_build(**kvargs).get('build').get('arn')
 
     def test_trigger_Update_Sheet(self):
-        build_id = self.trigger_task('update_sheet','this is a message from CodeBuild')
+        build_id = self.trigger_task('update_sheet','This is another message from CodeBuild')
         self.api.code_build.build_wait_for_completion(build_id)
 
 
