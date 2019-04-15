@@ -13,19 +13,20 @@ class test_Trigger_Builds(TestCase):
         self.account_id = IAM().account_id()
         self.api = Create_Code_Build(account_id=self.account_id, project_name=self.project_name)
 
-    def trigger_task(self,task_name,message):
+    def trigger_task(self,task_name,file_id, command):
         kvargs = {
             'projectName'      : self.project_name,
             'buildspecOverride': 'osbot_gsheet_sync/tasks/{0}/buildspec.yml'.format(task_name),
-            'environmentVariablesOverride': [{ 'name' : 'message',
-                                               'value': message,
-                                               'type' : 'PLAINTEXT'}]
+            'environmentVariablesOverride': [{ 'name': 'file_id', 'value': file_id, 'type': 'PLAINTEXT'},
+                                             { 'name': 'command', 'value': command, 'type': 'PLAINTEXT'}]
             #'sourceVersion'    : task_name
         }
         return self.api.code_build.codebuild.start_build(**kvargs).get('build').get('arn')
 
-    def test_trigger_Update_Sheet(self):
-        build_id = self.trigger_task('update_sheet','This is another message from CodeBuild')
+    def test_trigger_load_sheet(self):
+        file_id = '1_Bwz6z34wALFGb1ILUXG8CtF1-Km6F9_sGXnAu4gewY'
+        command = 'load_sheet'
+        build_id = self.trigger_task('update_sheet',file_id, command)
         self.api.code_build.build_wait_for_completion(build_id)
 
     def test_jira_load(self):

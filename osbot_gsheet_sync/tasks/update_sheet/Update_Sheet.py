@@ -37,5 +37,19 @@ class Update_Sheet:
 
 
         print('******* In Update_Sheet **** [End]')
+
+    def exec_command(self):
+        file_id = os.environ.get('file_id')
+        command = os.environ.get('command')
+        if file_id is None or command is None:
+            Dev.pprint('**** missing file_id or command environment variables****')
+        else:
+            gsuite_secret_id = 'gsuite_gsbot_user'
+            sheets_sync = API_Jira_Sheets_Sync(file_id=file_id, gsuite_secret_id=gsuite_secret_id)
+            if command is 'load_sheet': result = sheets_sync.load_data_from_jira()
+            if command is 'sync_sheet': result = sheets_sync.sync_sheet()
+
+            Dev.pprint('****** result*****', result)
+
 if __name__ == '__main__':
-    Update_Sheet().log_message()
+    Update_Sheet().exec_command()
