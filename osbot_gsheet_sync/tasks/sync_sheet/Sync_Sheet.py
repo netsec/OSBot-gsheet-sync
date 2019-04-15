@@ -6,7 +6,7 @@ from pbx_gs_python_utils.utils.Lambdas_Helpers import slack_message
 from pbx_gs_python_utils.utils.Misc import Misc
 
 
-class Update_Sheet:
+class Sync_Sheet:
 
     def log_message(self):
         graph_name = 'graph_BEY'
@@ -20,12 +20,12 @@ class Update_Sheet:
         slack_message(message, [], channel, team_id)
 
         file_id = '1_Bwz6z34wALFGb1ILUXG8CtF1-Km6F9_sGXnAu4gewY'
-        gsuite_secret_id = 'gsuite_token'
+        gsuite_secret_id = 'gsuite_gsbot_user'
         sheets_sync = API_Jira_Sheets_Sync(file_id=file_id, gsuite_secret_id=gsuite_secret_id)
         result = sheets_sync.load_data_from_jira()
         Dev.pprint(result)
 
 
-        print('******* In Update_Sheet **** [End]')
+        print('******* In Sync_Sheet **** [End]')
 if __name__ == '__main__':
-    Update_Sheet().log_message()
+    Sync_Sheet().log_message()
