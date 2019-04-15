@@ -47,9 +47,9 @@ class Update_Sheet:
             Dev.pprint('##########', file_id, command, '##########')
             gsuite_secret_id = 'gsuite_gsbot_user'
             sheets_sync = API_Jira_Sheets_Sync(file_id=file_id, gsuite_secret_id=gsuite_secret_id)
-            result = ''
-            if command is 'load_sheet': result = sheets_sync.load_data_from_jira()
-            if command is 'sync_sheet': result = sheets_sync.sync_sheet()
+            if command == 'load_sheet'  : result = sheets_sync.load_data_from_jira()
+            elif command == 'sync_sheet': result = sheets_sync.sync_sheet()
+            else                        : result = 'Command not Supported: {0}'.format(command)
 
             Dev.pprint('****** result*****', result)
 
