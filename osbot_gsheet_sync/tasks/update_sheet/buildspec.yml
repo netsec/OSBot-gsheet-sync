@@ -2,8 +2,7 @@ version: 0.1
 phases:
   install:
     commands:
-      - pip3 install osbot-jira
-      - pip3 install osbot-gsuite
+      - pip3 install osbot-jira osbot-gsuite osbot-aws pbx-gs-python-utils
       - pip install jira
   build:
     commands:
