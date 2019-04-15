@@ -4,4 +4,4 @@ phases:
     commands:
       - echo "**** Starting build"
       - echo "**** Running tests"
-      - python3 osbot_gsheet_sync/update_sheet/Update_Sheet.py
+      - python3 osbot_gsheet_sync/tasks/update_sheet/Update_Sheet.py

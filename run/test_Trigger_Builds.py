@@ -16,7 +16,9 @@ class test_Trigger_Builds(TestCase):
         kvargs = {
             'projectName'      : self.project_name,
             'buildspecOverride': 'osbot_gsheet_sync/tasks/{0}/buildspec.yml'.format(task_name),
-            'artifactsOverride': {'name': 'AAAAAAAAA'}
+            'environmentVariablesOverride': [{ 'name' : 'aaa',
+                                               'value': 'bbb',
+                                               'type' : 'PLAINTEXT'}]
             #'sourceVersion'    : task_name
         }
         return self.api.code_build.codebuild.start_build(**kvargs).get('build')
