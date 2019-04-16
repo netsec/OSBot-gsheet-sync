@@ -4,7 +4,8 @@ phases:
 #    commands:
 #      - pip3 install jira boto3
 #      - pip3 install elasticsearch google-api-python-client oauth2client
-      - pip3 install osbot-jira osbot-gsuite #osbot-aws pbx-gs-python-utils
+      - pip3 install osbot-jira osbot-gsuite
+#osbot-aws pbx-gs-python-utils
 
   build:
     commands:
