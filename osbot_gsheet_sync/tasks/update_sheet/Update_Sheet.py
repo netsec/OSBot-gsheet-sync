@@ -1,3 +1,4 @@
+import sys; sys.path.append('.')
 import os
 from pbx_gs_python_utils.utils.Dev      import Dev
 from osbot_gsheet_sync.api.Run_Command  import Run_Command

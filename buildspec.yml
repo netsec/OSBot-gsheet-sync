@@ -1,9 +1,9 @@
 version: 0.1
 phases:
-  install:
-    commands:
-      - pip3 install osbot-jira
-      - pip3 install osbot-gsuite
+#  install:
+#    commands:
+#      - pip3 install osbot-jira
+#      - pip3 install osbot-gsuite
 #  build:
 #    commands:
 #      - echo "**** Starting build"
