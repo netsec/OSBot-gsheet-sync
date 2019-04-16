@@ -36,10 +36,10 @@ class test_Trigger_Builds(TestCase):
         build_id = self.trigger_task('update_sheet',file_id, command)
         Dev.pprint(build_id)
 
-    def test_jira_load(self):
-        file_id = '1_Bwz6z34wALFGb1ILUXG8CtF1-Km6F9_sGXnAu4gewY'
-        gsuite_secret_id ='gsuite_gsbot_user'
-        sheets_sync = API_Jira_Sheets_Sync(file_id=file_id, gsuite_secret_id=gsuite_secret_id)
-        result = sheets_sync.load_data_from_jira()
-        Dev.pprint(result)
+    # def test_jira_load(self):
+    #     file_id = '1_Bwz6z34wALFGb1ILUXG8CtF1-Km6F9_sGXnAu4gewY'
+    #     gsuite_secret_id ='gsuite_gsbot_user'
+    #     sheets_sync = API_Jira_Sheets_Sync(file_id=file_id, gsuite_secret_id=gsuite_secret_id)
+    #     result = sheets_sync.load_data_from_jira()
+    #     Dev.pprint(result)
 
