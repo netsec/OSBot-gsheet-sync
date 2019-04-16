@@ -1,5 +1,4 @@
 from osbot_gsuite.apis.sheets.API_Jira_Sheets_Sync import API_Jira_Sheets_Sync
-from pbx_gs_python_utils.utils.Misc import Misc
 
 
 class Run_Command():
