@@ -1,48 +1,11 @@
 import os
-
-from osbot_gsuite.apis.sheets.API_Jira_Sheets_Sync import API_Jira_Sheets_Sync
-from pbx_gs_python_utils.utils.Dev import Dev
-from pbx_gs_python_utils.utils.Lambdas_Helpers import slack_message
-from pbx_gs_python_utils.utils.Misc import Misc
-
-from osbot_gsheet_sync.api.Run_Command import Run_Command
-
+from pbx_gs_python_utils.utils.Dev      import Dev
+from osbot_gsheet_sync.api.Run_Command  import Run_Command
 
 class Update_Sheet:
 
-    def log_message(self):
-        graph_name = 'graph_BEY'
-        folder     = '1o-kpQ9sLzo0_wE13XcmnUuH7GNsHpdbp'
-        domain     = 'photobox.com'
-
-        print('******* In Update_Sheet **** [Start]')
-        message = os.environ['message']
-        channel = 'DDKUZTK6X'
-        team_id = 'T7F3AUXGV'
-        slack_message(message, [], channel, team_id)
-
-        file_id = '1_Bwz6z34wALFGb1ILUXG8CtF1-Km6F9_sGXnAu4gewY'
-        gsuite_secret_id = 'gsuite_gsbot_user'
-        sheets_sync = API_Jira_Sheets_Sync(file_id=file_id, gsuite_secret_id=gsuite_secret_id)
-        sheet_name = sheets_sync.sheet_name()
-        Dev.pprint('sheet name', sheet_name)
-        sheet_data = sheets_sync.get_sheet_data(sheet_name)
-        Dev.pprint(sheet_data)
-
-        sheets_sync.update_sheet_data_with_jira_data(sheet_data)
-        raw_data = sheets_sync.convert_sheet_data_to_raw_data(sheet_data)
-        sheets_sync.update_file_with_raw_data(raw_data, sheets_sync.sheet_name())
-        sheets_sync.update_file_with_raw_data(raw_data,sheets_sync.sheet_name_backup())
-        return "loaded data from jira completed...."
-        #result = sheets_sync.load_data_from_jira()
-        #Dev.pprint(result)
-
-
-        print('******* In Update_Sheet **** [End]')
-
     def exec_command(self):
         print('******* In Update_Sheet **** [Start]')
-
         file_id = os.environ.get('file_id')
         command = os.environ.get('command')
 
@@ -50,13 +13,6 @@ class Update_Sheet:
             Dev.pprint('**** missing file_id or command environment variables****')
         else:
             result = Run_Command(file_id).run(command)
-            # Dev.pprint('##########', file_id, command, '##########')
-            # gsuite_secret_id = 'gsuite_gsbot_user'
-            # sheets_sync = API_Jira_Sheets_Sync(file_id=file_id, gsuite_secret_id=gsuite_secret_id)
-            # if command == 'load_sheet'  : result = sheets_sync.load_data_from_jira()
-            # elif command == 'sync_sheet': result = sheets_sync.sync_sheet()
-            # else                        : result = 'Command not Supported: {0}'.format(command)
-            #
             Dev.pprint('****** result*****', result)
 
         return "loaded data from jira completed...."

@@ -10,6 +10,4 @@ phases:
   build:
     commands:
       - echo "**** Starting build"
-      - echo "**** Running tests"
-      - echo "env $aaa ...."
       - python3 osbot_gsheet_sync/tasks/update_sheet/Update_Sheet.py
