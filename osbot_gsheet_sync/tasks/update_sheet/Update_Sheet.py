@@ -5,6 +5,8 @@ from pbx_gs_python_utils.utils.Dev import Dev
 from pbx_gs_python_utils.utils.Lambdas_Helpers import slack_message
 from pbx_gs_python_utils.utils.Misc import Misc
 
+from osbot_gsheet_sync.api.Run_Command import Run_Command
+
 
 class Update_Sheet:
 
@@ -39,19 +41,25 @@ class Update_Sheet:
         print('******* In Update_Sheet **** [End]')
 
     def exec_command(self):
+        print('******* In Update_Sheet **** [Start]')
+
         file_id = os.environ.get('file_id')
         command = os.environ.get('command')
+
         if file_id is None or command is None:
             Dev.pprint('**** missing file_id or command environment variables****')
         else:
-            Dev.pprint('##########', file_id, command, '##########')
-            gsuite_secret_id = 'gsuite_gsbot_user'
-            sheets_sync = API_Jira_Sheets_Sync(file_id=file_id, gsuite_secret_id=gsuite_secret_id)
-            if command == 'load_sheet'  : result = sheets_sync.load_data_from_jira()
-            elif command == 'sync_sheet': result = sheets_sync.sync_sheet()
-            else                        : result = 'Command not Supported: {0}'.format(command)
-
+            result = Run_Command(file_id).run(command)
+            # Dev.pprint('##########', file_id, command, '##########')
+            # gsuite_secret_id = 'gsuite_gsbot_user'
+            # sheets_sync = API_Jira_Sheets_Sync(file_id=file_id, gsuite_secret_id=gsuite_secret_id)
+            # if command == 'load_sheet'  : result = sheets_sync.load_data_from_jira()
+            # elif command == 'sync_sheet': result = sheets_sync.sync_sheet()
+            # else                        : result = 'Command not Supported: {0}'.format(command)
+            #
             Dev.pprint('****** result*****', result)
+
+        return "loaded data from jira completed...."
 
 if __name__ == '__main__':
     Update_Sheet().exec_command()
