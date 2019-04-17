@@ -6,7 +6,7 @@ from osbot_gsheet_sync.api.Run_Command  import Run_Command
 class Update_Sheet:
 
     def exec_command(self):
-        print('******* In Update_Sheet **** [Start]')
+        print('******* In Update_Sheet (test) **** [Start]')
         file_id = os.environ.get('file_id')
         command = os.environ.get('command')
 
