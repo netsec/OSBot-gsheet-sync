@@ -16,7 +16,7 @@ class Update_Sheet:
             result = Run_Command(file_id).run(command)
             Dev.pprint('****** result*****', result)
 
-        return "loaded data from jira completed...."
+        return ":point-right: Loaded data from jira completed ... (please check it)"
 
 if __name__ == '__main__':
     Update_Sheet().exec_command()
